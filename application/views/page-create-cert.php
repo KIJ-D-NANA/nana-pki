@@ -60,21 +60,42 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="basic-login">
-							<form role="form" method="post" action="<?php echo site_url('login/check'); ?>">
+							<form role="form" method="post" enctype="multipart/form-data" action="<?php echo site_url('cert/create'); ?>">
 								<div class="form-group">
-		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username</b></label>
-									<input class="form-control" name="username" id="username" type="text" placeholder="">
+		        				 	<label for="countryname"><i class="icon-user"></i> <b>countryname</b></label>
+									<input class="form-control" name="countryname" id="countryname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
-									<input class="form-control" name="password" id="password" type="password" placeholder="">
+		        				 	<label for="stateorprovincename"><i class="icon-lock"></i> <b>stateorprovincename</b></label>
+									<input class="form-control" name="stateorprovincename" id="stateorprovincename" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-									<label class="checkbox">
-										<input type="checkbox"> Remember me
-									</label>
-									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
-									<button type="submit" class="btn pull-right">Login</button>
+		        				 	<label for="localityname"><i class="icon-lock"></i> <b>localityname</b></label>
+									<input class="form-control" name="localityname" id="localityname" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="organizationname"><i class="icon-lock"></i> <b>organizationname</b></label>
+									<input class="form-control" name="organizationname" id="organizationname" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="organizationalunitname"><i class="icon-lock"></i> <b>organizationalunitname</b></label>
+									<input class="form-control" name="organizationalunitname" id="organizationalunitname" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="commonname"><i class="icon-lock"></i> <b>commonname</b></label>
+									<input class="form-control" name="commonname" id="commonname" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="emailaddress"><i class="icon-lock"></i> <b>emailaddress</b></label>
+									<input class="form-control" name="emailaddress" id="emailaddress" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="publickey"><i class="icon-lock"></i> <b>publickey</b></label>
+									<input class="form-control" name="publickey" id="publickey" type="file" placeholder="">
+								</div>
+								<div class="form-group">
+									
+									<button type="submit" class="btn pull-right">Create</button>
 									<div class="clearfix"></div>
 								</div>
 							</form>

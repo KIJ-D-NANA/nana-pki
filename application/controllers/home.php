@@ -12,5 +12,7 @@ class Home extends CI_Controller {
     public function index() {
         $this->load->view('page-home');
     }
-
+    public function createCert(){
+        $this->load->view('page-create-cert');
+    }
 }

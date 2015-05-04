@@ -33,7 +33,7 @@ class Users_model extends CI_Model {
 
     public function login($username, $password) {
         $sql = 'select user_id, user_name from users where user_name = \''.$username.'\' and user_password = \''.sha1($password).'\'';
-        echo $sql;
+        
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $user_data = $query->first_row();

@@ -35,10 +35,10 @@
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
 						<li class="active">
-							<a href="<? echo base_url('home'); ?>">Home</a>
+							<a href="<?php echo site_url('home'); ?>">Home</a>
 						</li>
 						<li>
-							<a href="<? echo base_url('login'); ?>">Login</a>
+							<a href="<?php echo site_url('logout'); ?>">Logout</a>
 						</li>
 					</ul>
 				</nav>

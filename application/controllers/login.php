@@ -12,18 +12,16 @@ class Login extends CI_Controller {
 	}
 
 	public function check() {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-
+	    
         $login = $this->users_model->login($username, $password);
 
         if ($login) {
             // Session started
-            redirect('home');
+            redirect(site_url('home'));
         }
         else {
             // Set message incorrect username or password
-            redirect('login', 'refresh');
+            redirect(site_url('login'));
         }
     }
     

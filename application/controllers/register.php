@@ -18,18 +18,18 @@ class Register extends CI_Controller {
 
         if ($password != $confirmation) {
             // Handling here
-            redirect('register', 'refresh');
+            redirect(site_url('register'));
         }
 
         else {
             $query = $this->users_model->createUser($username, $password);
             if ($query == true) {
-                redirect('login', 'refresh');
+                redirect(site_url('login'));
             }
             else {
                 // Handling here
                 // User with that username already exists
-                redirect('register', 'refresh');
+                redirect(site_url('register'));
             }
         }
     }
