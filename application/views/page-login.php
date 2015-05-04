@@ -10,17 +10,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/icomoon-social.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon-social.css') ?>">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="css/leaflet.css" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/leaflet.css') ?>" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
 
-        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo base_url('assets/js/modernizr-2.6.2-respond-1.1.0.min.js') ?>"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -35,10 +35,10 @@
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
 						<li>
-							<a href="index.html">Home</a>
+							<a href="<?php echo site_url('home') ?>">Home</a>
 						</li>
 						<li class="active">
-							<a href="page-login.html">Login</a>
+							<a href="<?php echo site_url('login') ?>">Login</a>
 						</li>
 					</ul>
 				</nav>
@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="basic-login">
-							<form role="form" role="form" method="post" action="<?php echo base_url('login/check') ?>">
+							<form role="form" role="form" method="post" action="<?php echo site_url('login/check') ?>">
 								<div class="form-group">
 		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
 									<input class="form-control" name="username" id="username" type="text" placeholder="">
@@ -82,7 +82,7 @@
 					</div>
 					<div class="col-sm-7 social-login">
 						<div class="not-member">
-							<p>Not a member? <a href="<? echo base_url('register'); ?>">Register here</a></p>
+							<p>Not a member? <a href="<?php echo site_url('register'); ?>">Register here</a></p>
 						</div>
 					</div>
 				</div>
@@ -102,14 +102,14 @@
 
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="js/jquery.fitvids.js"></script>
-        <script src="js/jquery.sequence-min.js"></script>
-        <script src="js/jquery.bxslider.js"></script>
-        <script src="js/main-menu.js"></script>
-        <script src="js/template.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url('assets/js/jquery-1.9.1.min.js') ?>"><\/script>')</script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+        <script src="<?php echo base_url('http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fitvids.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.sequence-min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.bxslider.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/main-menu.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/template.js') ?>"></script>
 
     </body>
 </html>
