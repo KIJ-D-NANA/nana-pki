@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/nana-pki/index.php';
+$config['base_url']	= 'https://nana-pki-raizan.c9.io/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= 'http://localhost/nana-pki/index.php';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'home';
 
 /*
 |--------------------------------------------------------------------------

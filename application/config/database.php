@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
+$db['default']['hostname'] = '0.0.0.0';
+$db['default']['username'] = 'raizan';
 $db['default']['password'] = '';
-$db['default']['database'] = 'raizan_pki';
+$db['default']['database'] = 'nana_pki';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

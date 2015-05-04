@@ -10,17 +10,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/icomoon-social.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon-social.css'); ?>">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="../assets/css/leaflet.css" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/leaflet.css'); ?>" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="../assets/css/main.css">
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css'); ?>">
 
-        <script src="../assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo base_url('assets/js/modernizr-2.6.2-respond-1.1.0.min.js') ?>"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -98,7 +98,7 @@
 	        	<div class="row">
 	        		<div class="col-md-4 col-sm-6">
 	        			<div class="service-wrapper">
-		        			<img src="../assets/img/service-icon/diamond.png" alt="Service 1">
+		        			<img src="<?php echo base_url('assets/img/service-icon/diamond.png') ?>" alt="Service 1">
 		        			<h3>Aliquam in adipiscing</h3>
 		        			<p>Praesent rhoncus mauris ac sollicitudin vehicula. Nam fringilla turpis turpis, at posuere turpis aliquet sit amet condimentum</p>
 		        			<a href="#" class="btn">Read more</a>
@@ -106,7 +106,7 @@
 	        		</div>
 	        		<div class="col-md-4 col-sm-6">
 	        			<div class="service-wrapper">
-		        			<img src="../assets/img/service-icon/ruler.png" alt="Service 2">
+		        			<img src="<?php echo base_url('assets/img/service-icon/ruler.png') ?>" alt="Service 2">
 		        			<h3>Curabitur mollis</h3>
 		        			<p>Suspendisse eget libero mi. Fusce ligula orci, vulputate nec elit ultrices, ornare faucibus orci. Aenean lectus sapien, vehicula</p>
 		        			<a href="#" class="btn">Read more</a>
@@ -114,7 +114,7 @@
 	        		</div>
 	        		<div class="col-md-4 col-sm-6">
 	        			<div class="service-wrapper">
-		        			<img src="../assets/img/service-icon/box.png" alt="Service 3">
+		        			<img src="<?php echo base_url('assets/img/service-icon/box.png') ?>" alt="Service 3">
 		        			<h3>Vivamus mattis</h3>
 		        			<p>Phasellus posuere et nisl ac commodo. Nulla facilisi. Sed tincidunt bibendum cursus. Aenean vulputate aliquam risus rutrum scelerisque</p>
 		        			<a href="#" class="btn">Read more</a>
@@ -152,14 +152,14 @@
 
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../assets/js/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="../assets/js/bootstrap.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url('assets/js/jquery-1.9.1.min.js') ?>"><\/script>')</script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
-        <script src="../assets/js/jquery.fitvids.js"></script>
-        <script src="../assets/js/jquery.sequence-min.js"></script>
-        <script src="../assets/js/jquery.bxslider.js"></script>
-        <script src="../assets/js/main-menu.js"></script>
-        <script src="../assets/js/template.js"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fitvids.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.sequence-min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.bxslider.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/main-menu.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/template.js') ?>"></script>
 
     </body>
 </html>
