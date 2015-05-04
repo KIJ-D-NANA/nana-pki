@@ -35,10 +35,10 @@
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
 						<li>
-							<a href="index.html">Home</a>
+							<a href="index.php">Home</a>
 						</li>
 						<li class="active">
-							<a href="page-login.html">Login</a>
+							<a href="<? echo base_url('login'); ?>">Login</a>
 						</li>
 					</ul>
 				</nav>
@@ -49,7 +49,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h1>Login</h1>
+						<h1>Register</h1>
 					</div>
 				</div>
 			</div>
@@ -60,29 +60,29 @@
 				<div class="row">
 					<div class="col-sm-5">
 						<div class="basic-login">
-							<form role="form" role="form">
+							<form role="form" method="post" action="<?php echo base_url('register/create') ?>" >
 								<div class="form-group">
-		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
-									<input class="form-control" id="login-username" type="text" placeholder="">
+		        				 	<label for="register-username"><i class="icon-user"></i> <b>Email</b></label>
+									<input class="form-control" name="username" id="username" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
-									<input class="form-control" id="login-password" type="password" placeholder="">
+		        				 	<label for="register-password"><i class="icon-lock"></i> <b>Password</b></label>
+									<input class="form-control" name="password" id="password" type="password" placeholder="">
 								</div>
 								<div class="form-group">
-									<label class="checkbox">
-										<input type="checkbox"> Remember me
-									</label>
-									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
-									<button type="submit" class="btn pull-right">Login</button>
+		        				 	<label for="register-password2"><i class="icon-lock"></i> <b>Re-enter Password</b></label>
+									<input class="form-control" name="confirmation" id="password2" type="password" placeholder="">
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn pull-right">Register</button>
 									<div class="clearfix"></div>
 								</div>
 							</form>
 						</div>
 					</div>
-					<div class="col-sm-7 social-login">
+					<div class="col-sm-6 col-sm-offset-1 social-login">
 						<div class="not-member">
-							<p>Not a member? <a href="page-register.html">Register here</a></p>
+							<p>Already have an account? <a href="<? echo base_url('login'); ?>">Login now!</a></p>
 						</div>
 					</div>
 				</div>
