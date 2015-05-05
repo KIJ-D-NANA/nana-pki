@@ -62,7 +62,7 @@
 						<div class="basic-login">
 							<form role="form" method="post" action="<?php echo site_url('register/create') ?>" >
 								<div class="form-group">
-		        				 	<label for="register-username"><i class="icon-user"></i> <b>Email</b></label>
+		        				 	<label for="register-username"><i class="icon-user"></i> <b>Username</b></label>
 									<input class="form-control" name="username" id="username" type="text" placeholder="">
 								</div>
 								<div class="form-group">
