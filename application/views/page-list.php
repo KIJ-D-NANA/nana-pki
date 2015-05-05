@@ -48,101 +48,44 @@
 			</div>
 		</div>
 
-        <!-- Homepage Slider -->
-        <div class="homepage-slider">
-        	<div id="sequence">
-				<ul class="sequence-canvas">
-					<!-- Slide 1 -->
-					<li class="bg4">
-						<!-- Slide Title -->
-						<h2 class="title">Free SSL Certificate</h2>
-						<!-- Slide Text -->
-						<h3 class="subtitle">No risk, No cost. Get yours now</h3>
-						<!-- Slide Image -->
-						<!--<img class="slide-img" src="img/homepage-slider/slide1.png" />-->
-					</li>
-					<!-- End Slide 1 -->
-					<!-- Slide 2 -->
-					<li class="bg3">
-						<!-- Slide Title -->
-						<h2 class="title">Try Free SSL Certificate</h2>
-						<!-- Slide Text -->
-						<h3 class="subtitle">For 90 Days! (Maybe)</h3>
-						<!-- Slide Image -->
-						<!--<img class="slide-img" src="img/homepage-slider/slide2.png" />-->
-					</li>
-					<!-- End Slide 2 -->
-					<!-- Slide 3 -->
-					<li class="bg1">
-						<!-- Slide Title -->
-						<h2 class="title">Easy step</h2>
-						<!-- Slide Text -->
-						<h3 class="subtitle">Enroll > Confirm > Install</h3>
-						<!-- Slide Image -->
-						<!--<img class="slide-img" src="img/homepage-slider/slide3.png" />-->
-					</li>
-					<!-- End Slide 3 -->
-				</ul>
-				<div class="sequence-pagination-wrapper">
-					<ul class="sequence-pagination">
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-					</ul>
-				</div>
-			</div>
-        </div>
-        <!-- End Homepage Slider -->
-
-		
-		<!-- Services -->
-        <div class="section">
-	        <div class="container">
-	        	<div class="row">
-	        		<div class="col-md-4 col-sm-6">
-	        			<div class="service-wrapper">
-		        			<img src="<?php echo base_url('assets/img/service-icon/diamond.png') ?>" alt="Service 1">
-		        			<h3>Aliquam in adipiscing</h3>
-		        			<p>Praesent rhoncus mauris ac sollicitudin vehicula. Nam fringilla turpis turpis, at posuere turpis aliquet sit amet condimentum</p>
-		        			<a href="#" class="btn">Read more</a>
-		        		</div>
-	        		</div>
-	        		<div class="col-md-4 col-sm-6">
-	        			<div class="service-wrapper">
-		        			<img src="<?php echo base_url('assets/img/service-icon/ruler.png') ?>" alt="Service 2">
-		        			<h3>Curabitur mollis</h3>
-		        			<p>Suspendisse eget libero mi. Fusce ligula orci, vulputate nec elit ultrices, ornare faucibus orci. Aenean lectus sapien, vehicula</p>
-		        			<a href="#" class="btn">Read more</a>
-		        		</div>
-	        		</div>
-	        		<div class="col-md-4 col-sm-6">
-	        			<div class="service-wrapper">
-		        			<img src="<?php echo base_url('assets/img/service-icon/box.png') ?>" alt="Service 3">
-		        			<h3>Vivamus mattis</h3>
-		        			<p>Phasellus posuere et nisl ac commodo. Nulla facilisi. Sed tincidunt bibendum cursus. Aenean vulputate aliquam risus rutrum scelerisque</p>
-		        			<a href="#" class="btn">Read more</a>
-		        		</div>
-	        		</div>
-	        	</div>
-	        </div>
-	    </div>
-	    <!-- End Services -->
-
-		<!-- Call to Action Bar -->
-	    <div class="section section-white">
+		<!-- Page Title -->
+		<div class="section section-breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="calltoaction-wrapper">
-							<h3>It's a free SSL Certificate!</h3> <a href="<?php echo site_url('cert'); ?>" class="btn btn-orange">Grab Yours Now!</a>
-						</div>
+						<h1>Certificate List</h1>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- End Call to Action Bar -->
-
-	    <!-- Footer -->
+        
+        <div class="section">
+	    	<div class="container">
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				echo "<table class="events-list">";
+	    				$counter = 1;
+	    				while ()
+	    				{
+	    					echo "<tr>";
+	    						echo "<td>
+	    							<div class="event-date">
+	    								<div class="event-day">$counter</div>
+	    							</div>
+	    						</td>";
+	    						echo "<td>
+	    							Donec hendrerit massa metus, a ultrices elit iaculis eu. Pellentesque ullamcorper augue lacus.
+	    						</td>";
+	    						echo "<td><a href="#" class="btn btn-grey btn-sm event-more">Read More</a></td>";
+	    					echo "</tr>";
+	    					$counter++;
+	    				}	
+	    				echo "</table>";
+	    			</div>
+	    		</div>
+			</div>
+		</div>
+		<!-- Footer -->
 	    <div class="footer">
 	    	<div class="container">
 		    	<div class="row">

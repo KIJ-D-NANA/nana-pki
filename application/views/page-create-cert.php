@@ -38,7 +38,10 @@
 							<a href="<?php echo site_url('home') ?>">Home</a>
 						</li>
 						<li class="active">
-							<a href="<?php echo site_url('login') ?>">Login</a>
+							<a href="<?php echo site_url('cert'); ?>">Create Certificate</a>
+						</li>
+						<li>
+							<a href="<?php echo site_url('logout') ?>">Logout</a>
 						</li>
 					</ul>
 				</nav>
@@ -48,8 +51,8 @@
 		<div class="section section-breadcrumbs">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
-						<h1>Login</h1>
+					<div class="col-md-12 centered">
+						<h1>Create Certificate</h1>
 					</div>
 				</div>
 			</div>
@@ -58,39 +61,39 @@
         <div class="section">
 	    	<div class="container">
 				<div class="row">
-					<div class="col-sm-5">
+					<div class="col-md-6 centered">
 						<div class="basic-login">
-							<form role="form" method="post" enctype="multipart/form-data" action="<?php echo site_url('cert/create'); ?>">
+							<form role="form" method="post" enctype="multipart/form-data" action="">
 								<div class="form-group">
-		        				 	<label for="countryname"><i class="icon-user"></i> <b>countryname</b></label>
+		        				 	<label for="countryname"><i class="icon-user"></i> <b>country name</b></label>
 									<input class="form-control" name="countryname" id="countryname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="stateorprovincename"><i class="icon-lock"></i> <b>stateorprovincename</b></label>
+		        				 	<label for="stateorprovincename"><i class="icon-lock"></i> <b>state or province name</b></label>
 									<input class="form-control" name="stateorprovincename" id="stateorprovincename" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="localityname"><i class="icon-lock"></i> <b>localityname</b></label>
+		        				 	<label for="localityname"><i class="icon-lock"></i> <b>locality name</b></label>
 									<input class="form-control" name="localityname" id="localityname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="organizationname"><i class="icon-lock"></i> <b>organizationname</b></label>
+		        				 	<label for="organizationname"><i class="icon-lock"></i> <b>organization name</b></label>
 									<input class="form-control" name="organizationname" id="organizationname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="organizationalunitname"><i class="icon-lock"></i> <b>organizationalunitname</b></label>
+		        				 	<label for="organizationalunitname"><i class="icon-lock"></i> <b>organizational unitname</b></label>
 									<input class="form-control" name="organizationalunitname" id="organizationalunitname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="commonname"><i class="icon-lock"></i> <b>commonname</b></label>
+		        				 	<label for="commonname"><i class="icon-lock"></i> <b>common name</b></label>
 									<input class="form-control" name="commonname" id="commonname" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="emailaddress"><i class="icon-lock"></i> <b>emailaddress</b></label>
+		        				 	<label for="emailaddress"><i class="icon-lock"></i> <b>email address</b></label>
 									<input class="form-control" name="emailaddress" id="emailaddress" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="publickey"><i class="icon-lock"></i> <b>publickey</b></label>
+		        				 	<label for="publickey"><i class="icon-lock"></i> <b>public key</b></label>
 									<input class="form-control" name="publickey" id="publickey" type="file" placeholder="">
 								</div>
 								<div class="form-group">
@@ -99,11 +102,6 @@
 									<div class="clearfix"></div>
 								</div>
 							</form>
-						</div>
-					</div>
-					<div class="col-sm-7 social-login">
-						<div class="not-member">
-							<p>Not a member? <a href="<?php echo site_url('register'); ?>">Register here</a></p>
 						</div>
 					</div>
 				</div>
