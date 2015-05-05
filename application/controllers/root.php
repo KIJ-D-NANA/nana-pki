@@ -50,6 +50,7 @@ class Root extends CI_Controller {
         // This creates a self-signed cert that is valid for 365 days
         
         $bytes = openssl_random_pseudo_bytes(8, $cstrong);
+        echo hexdec(bin2hex($bytes));
         $sscert = openssl_csr_sign($csr, null, $privkey, 365,$config,hexdec(bin2hex($bytes)));
         
         // Now you will want to preserve your private key, CSR and self-signed
@@ -64,19 +65,18 @@ class Root extends CI_Controller {
         openssl_pkey_export($privkey, $pkeyout, "ownca") and var_dump($pkeyout);
         
         
-        //echo base_url('certificates/ca/');
 
-        if ( ! write_file('certificates/ca/ca.crt', $certout, 'wb')) {
-             echo 'Unable to write the file';
-        }
-        else {
-             echo 'File written!';
-        }
+        // if ( ! write_file('certificates/ca/ca.crt', $certout, 'wb')) {
+        //      echo 'Unable to write the file';
+        // }
+        // else {
+        //      echo 'File written!';
+        // }
         
-        //Show any errors that occurred here
-        while (($e = openssl_error_string()) !== false) {
-            echo $e . "\n";
-        }
+        // //Show any errors that occurred here
+        // while (($e = openssl_error_string()) !== false) {
+        //     echo $e . "\n";
+        // }
     }
 }
 
