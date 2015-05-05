@@ -12,7 +12,8 @@ class Login extends CI_Controller {
 	}
 
 	public function check() {
-	    
+	    $username = $this->input->post('username');
+        $password = $this->input->post('password');
         $login = $this->users_model->login($username, $password);
 
         if ($login) {

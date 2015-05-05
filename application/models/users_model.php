@@ -8,9 +8,10 @@ class Users_model extends CI_Model {
 
     public function createUser($username, $password) {
         $is_exist = $this->checkUsername($username);
-
+        $salted_password = $password.$username;
+        $hashed_password = hash('sha256', $salted_password);
         if (!$is_exist) {
-            $sql = 'insert into users values(\''.$this->generate_uuid_v4().'\',\''.$username.'\''.',\''.sha1($password).'\')';
+            $sql = 'insert into users values(\''.$this->generate_uuid_v4().'\',\''.$username.'\''.',\''.$hashed_password.'\')';
             return $this->db->query($sql);
         }
         else {
@@ -28,12 +29,12 @@ class Users_model extends CI_Model {
         else {
             return false; // Not found
         }
-
     }
 
     public function login($username, $password) {
-        $sql = 'select user_id, user_name from users where user_name = \''.$username.'\' and user_password = \''.sha1($password).'\'';
-        
+        $salted_password = $password.$username;
+        $hashed_password = hash('sha256', $salted_password);
+        $sql = 'select user_id, user_name from users where user_name = \''.$username.'\' and user_password = \''.$hashed_password.'\'';
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $user_data = $query->first_row();

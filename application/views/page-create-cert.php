@@ -90,8 +90,8 @@
 									<input class="form-control" name="emailaddress" id="emailaddress" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="publickey"><i class="icon-lock"></i> <b>publickey</b></label>
-									<input class="form-control" name="publickey" id="publickey" type="file" placeholder="">
+		        				 	<label for="csr"><i class="icon-lock"></i> <b>csr</b></label>
+									<input class="form-control" name="csr" id="csr" type="file" placeholder="">
 								</div>
 								<div class="form-group">
 									
