@@ -7,6 +7,9 @@ class Home extends CI_Controller {
         if ($this->session->userdata['user_id'] == null){
             redirect(site_url('login'));
         }
+        else if($this->session->userdata['user_name']=='admin'){
+            redirect(site_url('admin'));
+        }
         $this->load->model('csr_model');
         $this->load->model('certs_model');
     }
@@ -26,15 +29,20 @@ class Home extends CI_Controller {
         $this->load->view('title_header',$data);
         $this->load->view('page-submit-csr');
         $this->load->view('footer');
+        
     }
 
     public function listUserCert(){
-        $result = $this->certs_model->getCertificateList();
+        $result = $this->certs_model->getCertificateList($this->session->userdata('user_id'));
         $i = 0;
         $pack = array();
-        foreach ($result as $row) {
+        if(isset($result)){
+            foreach ($result as $row) {
             $pack[$i]["serial_number"] = $row->serial_number;
+            $i++;
         }
+        }
+        
         $data["pack"] = $pack;
         $data['title'] =  "Certificate List";
         $data['url'] = 'home/listUserCert';
@@ -46,15 +54,16 @@ class Home extends CI_Controller {
     }
     
     public function listUserCsr(){
-        $result = $this->csr_model->getAll();
+        $result = $this->csr_model->getAll($this->session->userdata['user_id']);
         $i = 0;
         $pack = array();
         if(isset($result)){
             foreach ($result as $row) {
-                 $pack[$i]["csr_id"] = $row->csr_id;
+                $pack[$i]["csr_id"] = $row->csr_id;
+                $pack[$i]["dn"] = openssl_csr_get_subject($row->csr_content);
+                $i++;
             }
         }
-        
         $data["pack"] = $pack;
         $data['title'] =  "CSR List";
         $data['url'] = 'home/listUserCsr';
@@ -81,15 +90,27 @@ class Home extends CI_Controller {
     public function exportcert(){
         $serial = $this->input->post('serial_number');
         $format = $this->input->post('format');
+        $passphrase = $this->input->post('passphrase');
+        
         
         $cert = $this->certs_model->getCertificate($serial);
-        print_r(openssl_x509_parse($cert));
+        
+        $this->load->helper('download');
         if ($format == "crt") {
-            
+            $name = $serial.'.crt';
+            force_download($name, $cert);
         }
         
-        else if ($format == "pkcs12") {
-            
+        // else if ($format == "pkcs12") {
+        //     if (isset($passphrase)){
+        //         openssl_pkcs12_export($cert, $p12content, $passphrase);
+        //         $name = $serial.'.p12';
+        //         force_download($name, $p12content);
+        //     }     
+        // }
+        
+        else {
+            redirect(site_url('home/listusercert'));
         }
     }
 }

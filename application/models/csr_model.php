@@ -14,8 +14,14 @@ class Csr_model extends CI_Model {
         $this->db->query($sql);
     }
     
-    public function getAll() {
-        $sql = 'select * from csr, users where csr.user_id = users.user_id and csr.csr_signed = false';
+    public function getAll($user_id = null) {
+        if($user_id == null) {
+            $sql = 'select * from csr, users where csr.user_id = users.user_id and csr.csr_signed = false';    
+        }
+        else {
+            $sql = 'select * from csr, users where csr.user_id = users.user_id and csr.csr_signed = false and users.user_id = \''.$user_id.'\'';    
+        }
+        
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
            return $query->result();
@@ -48,6 +54,18 @@ class Csr_model extends CI_Model {
         if ($query->num_rows() > 0) {
            $result = $query->row();
            return $result->cert_usage;
+        }
+        else {
+            // Failed
+        }
+    }
+    
+    public function getUser($csr_id) {
+        $sql = 'select user_id from csr where csr_id = \''.$csr_id.'\'';
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+           $result = $query->row();
+           return $result->user_id;
         }
         else {
             // Failed

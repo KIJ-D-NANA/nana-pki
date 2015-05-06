@@ -16,7 +16,11 @@ class Admin extends CI_Controller {
     public function index() {
         // Fokus please bikin nya
         // $this->load->view('page-admin');
-        echo "Fokus please bikin nya";
+       $data['title'] =  "Admin";
+        $data['url'] = 'admin';
+        $this->load->view('admin_header',$data);
+        $this->load->view('page-home');
+        $this->load->view('footer');;
     }
     
     public function csrlist() {
@@ -28,11 +32,16 @@ class Admin extends CI_Controller {
                 $pack[$i]["dn"] = openssl_csr_get_subject($row->csr_content);
                 $pack[$i]["username"] = $row->user_name;
                 $pack[$i]["csr_id"] = $row->csr_id;
+                $i++;
             }
         }
         
         $data["pack"] = $pack;
+        $data['url'] = "home/csrlist";
+        $data['title'] = "Certificate Signing Request";
+        $this->load->view('admin_header',$data);
         $this->load->view('page-csr-list', $data);
+        $this->load->view('footer');
     }
     
     public function signCsr($csr_id) {
@@ -129,16 +138,25 @@ class Admin extends CI_Controller {
         $result = $this->certs_model->getCertificateList();
         $i = 0;
         $pack = array();
+        
         foreach ($result as $row) {
             $pack[$i]["serial_number"] = $row->serial_number;
+            $content = openssl_x509_parse($row->certificate_content);
+            $pack[$i]["name"] = $content["name"];
+            $pack[$i]["revoke_request"] = $row->revoke_request;
             $i++;
         }    
         $data["pack"] = $pack;
         // Presentasi data dalam bentuk tabel
+        $data["pack"] = $pack;
+        $data['url'] = "home/certlist";
+        $data['title'] = "Certificate List";
+        $this->load->view('admin_header',$data);
         $this->load->view('page-cert-list', $data);
+        $this->load->view('footer');
     }
 
-    public function revoke(){
+    public function revoke($serial_number){
         // Load the CA and its private key.
         $pemcakey = file_get_contents('myCAprivkey.pem');
         $cakey = new Crypt_RSA();

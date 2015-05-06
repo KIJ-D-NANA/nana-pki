@@ -55,7 +55,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="calltoaction-wrapper">
-							<h3>It's a free SSL Certificate!</h3> <a href="<?php echo site_url('cert'); ?>" class="btn btn-orange">Grab Yours Now!</a>
+							<h3>It's a free SSL Certificate!</h3> <a href="<?php echo site_url('home/submitCsr'); ?>" class="btn btn-orange">Grab Yours Now!</a>
 						</div>
 					</div>
 				</div>

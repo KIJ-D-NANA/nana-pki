@@ -4,7 +4,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form role="form" method="post" action="">
                         <table class="table-striped table-condensed text-center" style="margin:auto;width:80%;"  >
                         <tr class="text-center">
 	    			            <th class="text-center">Serial Number</th>
@@ -22,28 +21,25 @@
                            
                             echo '<td>
                             
-                            <form method="post" action="'.site_url('').'>
-                            <div class="controls">
-                                <select id="selectbasic" name="selectbasic" class="input-xlarge">
+                            <form method="post" action="'.site_url('home/exportcert').'">
+                            
+                                <select name="format" class="input-xlarge format">
                                   <option value="">--Select Download Format--</option>
-                                  <option value="cert">CERT</option>
-                                  <option value="pkcs12">PKCS#12</option>
-                                  <option value="pem">PEM</option>
+                                  <option value="crt">CRT</option>
+                                  
                                 </select>
-                             </div>
-                             
+                                <input type="hidden" name="serial_number" value="'.$pack[$i]["serial_number"].'">
                             <button type="submit" class="btn btn-default">Download!</button>
                             </form>
                             </td>';
 
                             
-                            echo '<td><div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Certificate</a></p></div></td>';
+                            echo '<td><div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Request</a></p></div></td>';
                             echo '</tr>';
-                            
+                            $i++;
                         }   
                         ?>
                         </table>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -68,5 +64,8 @@
                 </div>
             </div>
         </div>
-
+    <script>
+        
+        
+    </script>
      

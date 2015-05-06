@@ -45,17 +45,20 @@
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
-						<li <?php if($url=='home') echo 'class="active"'?> >
+						<li <?php if($url=='admin') echo 'class="active"'?> >
 							<a href="<?php echo site_url('admin'); ?>">Home</a>
 						</li>
-						<li <?php if($url=='home/submitCsr') echo 'class="active"'?> >
-							<a href="<?php echo site_url('admin/csrlist'); ?>">Certificate Signing Request </a>
+						<li <?php if($url=='admin/csrlist') echo 'class="active"'?> >
+							<a href="<?php echo site_url('admin/csrlist'); ?>">Certificate Signing List </a>
 						</li>
-						<li <?php if($url=='home/listUserCsr') echo 'class="active"'?> >
+						<li <?php if($url=='admin/certlist') echo 'class="active"'?> >
 							<a href="<?php echo site_url('admin/certlist'); ?>">Certificate List </a>
 						</li>
                         <li <?php if($url=='logout') echo 'class="active"'?> >
 							<a href="<?php echo site_url('logout'); ?>">Logout</a>
+						</li>
+						 <li <?php if($url=='download') echo 'class="active"'?> >
+							<a href="<?php echo site_url('ca'); ?>">Download CA Cert</a>
 						</li>
 					</ul>
 				</nav>

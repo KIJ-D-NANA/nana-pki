@@ -4,18 +4,20 @@ class Certs_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('csr_model');
     }
     
-    public function getCertificateList($user_id=null){
+    public function getCertificateList($user_id = null){
         if ($user_id == null){
             $sql = 'select * from certificates';
         }
         else {
             $sql = 'select * from certificates where user_id = \''.$user_id.'\'';
         }
+        
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
-           return $query->result();
+          return $query->result();
         }
         else {
             // Failed
@@ -35,8 +37,8 @@ class Certs_model extends CI_Model {
     }
     
     public function saveCertificate($serial, $csr_id, $cert) {
-        $user_id = $this->session->userdata('user_id');
-        $sql = 'insert into certificates values(\''.$serial.'\',\''.$user_id.'\''.',\''.$csr_id.'\''.',\''.$cert.'\', 0, now())';
+        $user_id = $this->csr_model->getUser($csr_id);
+        $sql = 'insert into certificates values(\''.dechex($serial).'\',\''.$user_id.'\''.',\''.$csr_id.'\''.',\''.$cert.'\', 0, now())';
         $this->db->query($sql);
     }
     

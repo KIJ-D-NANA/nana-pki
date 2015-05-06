@@ -12,15 +12,26 @@
 
         <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/css/icomoon-social.css') ?>">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="<?php echo base_url('assets/css/leaflet.css') ?>" />
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="css/leaflet.ie.css" />
 		<![endif]-->
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css') ?>">
-
+		
+		 <!-- Javascripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url('assets/js/jquery-1.9.1.min.js') ?>"><\/script>')</script>
+        <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+        <script src="https://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+        <script src="<?php echo base_url('assets/js/jquery.fitvids.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.sequence-min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.bxslider.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/main-menu.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/template.js') ?>"></script>
         <script src="<?php echo base_url('assets/js/modernizr-2.6.2-respond-1.1.0.min.js') ?>"></script>
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -32,7 +43,7 @@
         <div class="mainmenu-wrapper">
 	        <div class="container">
 		        <nav id="mainmenu" class="mainmenu">
-					<ul>
+					<ul >
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
 						<li <?php if($url=='home') echo 'class="active"'?> >
 							<a href="<?php echo site_url('home'); ?>">Home</a>
@@ -48,6 +59,9 @@
 						</li>
                         <li <?php if($url=='logout') echo 'class="active"'?> >
 							<a href="<?php echo site_url('logout'); ?>">Logout</a>
+						</li>
+						<li <?php if($url=='download') echo 'class="active"'?> >
+								<a href="<?php echo site_url('ca'); ?>">Download CA Cert</a>
 						</li>
 					</ul>
 				</nav>
