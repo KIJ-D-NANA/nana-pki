@@ -79,41 +79,62 @@
                 </nav>
             </div>
         </div>
-
+        
+        <!--Page Header-->
+        <div class="section section-breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>CSR List</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		
         <!--Page Content-->
         <div class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         <form role="form" method="post" action="">
-                        <? php 
-                        echo '<table class="events-list">';
-                        $counter = 1;
+                        <table class="table-striped table-condensed">
+                        <tr>
+	    			            <th>Serial Number</th>
+	    			            <th>Download</th>
+	    			            <th>Revoke</th>
+	    			            
+	    			    </tr>
+	    			    <?php
+                        $i = 0;
                         foreach($pack as $row)
                         {
                             echo '<tr>';
-                            echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
-                            echo '<td>SSL Certificate for'.$pack[$i]["serial_number"].'</td>';
-                            
-                            //Download Certificate
+                            echo '<td> '.$pack[$i]["serial_number"].'</td>';
+
+                           
                             echo '<td>
+                            
                             <form method="post" action="'.site_url('').'>
-                            <select name="dlformat">
-                                <option value=""> --Select Download Format--</option>
-                                <option value="crt">CRT</option>
-                                <option value="pkcs12">PKCS#12</option>
-                                <option value="pem">PEM</option>
-                            </select>
+                            <div class="controls">
+                                <select id="selectbasic" name="selectbasic" class="input-xlarge">
+                                  <option value="">--Select Download Format--</option>
+                                  <option value="cert">CERT</option>
+                                  <option value="pkcs12">PKCS#12</option>
+                                  <option value="pem">PEM</option>
+                                </select>
+                             </div>
+                             
                             <button type="submit" class="btn btn-default">Download!</button>
                             </form>
-                            </td>'
-                
-                            //Revoke Certificate
-                            echo '<div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Certificate</a></p></div>'
+                            </td>';
+
+                            
+                            echo '<td><div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Certificate</a></p></div></td>';
                             echo '</tr>';
-                            $counter++;
+                            
                         }   
-                        echo "</table>"; ?>
+                        ?>
+                        </table>
                         </form>
                     </div>
                 </div>
