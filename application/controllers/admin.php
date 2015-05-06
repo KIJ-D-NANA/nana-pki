@@ -4,18 +4,19 @@ class Admin extends CI_Controller {
 
     public function __construct(){
         parent::__construct();
-        include(APPPATH.'library/phpseclib/Crypt/RSA.php');
-        include(APPPATH.'library/phpseclib/File/X509.php');
-        if ($this->session->userdata['user_id'] == "admin"){
-            redirect(site_url('login'));
+        // include(APPPATH.'libraries/phpseclib/Crypt/RSA.php');
+        // include(APPPATH.'libraries/phpseclib/File/X509.php');
+        if ($this->session->userdata['user_name'] != "admin"){
+            redirect(site_url('home'));
         }
         $this->load->model('csr_model');
         $this->load->model('certs_model');
     }
 
     public function index() {
-        echo "Home admin";
-        echo "<br> Tambahkan link ke csrlist(), certlist()";
+        // Fokus please bikin nya
+        // $this->load->view('page-admin');
+        echo "Fokus please bikin nya";
     }
     
     public function csrlist() {
@@ -58,39 +59,61 @@ class Admin extends CI_Controller {
         // Reference: http://www.databasemart.com/howto/SQLoverssl/How_To_Request_Certificate_From_Certificate_Authority_Server_In_Internet_Explore.aspx
         
         $config = array(
+            "config" => "",
+            "x509_extensions" => "email_ext",
+            "x509_extensions"
             "digest_alg" => "sha256",
             "private_key_bits" => 2048,
             "private_key_type" => OPENSSL_KEYTYPE_RSA
         );
         
         
-        $seed = openssl_random_pseudo_bytes(8, $cstrong); // Generate serial number
-        $serial = hexdec(bin2hex($seed));
-        // Query here: check if serial number is already exist
-        // If it doesn't exist, then you can sign the certificate
-        // Else randomize again and check until you get the unique one
+        $serial = null;
+        
+        while(true){
+            $seed = openssl_random_pseudo_bytes(8, $cstrong); // Generate serial number
+            $serial = hexdec(bin2hex($seed));
+            
+            
+            // Query here: check if serial number is already exist
+            // If it doesn't exist, then you can sign the certificate
+            // Else randomize again and check until you get the unique one
+            
+            $is_exist = $this->certs_model->checkSerial($serial);
+            if(!$is_exist) {
+                break;
+            }
+        }
+        
+        // raizan here is passphrase for private key
         $usercert = openssl_csr_sign($csrdata, $cacert, array($privkey, "raizan"), 365, $config, $serial);
         
-        // Get serial number, save certificate to database
+        // Get serial number
         openssl_x509_export($usercert, $certout);
+        // Update CSR Signed flag to "true"
+        $this->csr_model->signCsr($csr_id);
+        // Save certificate to database
+        $this->certs_model->saveCertificate($serial, $csr_id, $certout);
         
+        redirect(site_url('admin/csrlist'));
         
-        // Codes below tell you how to export certificate to pkcs#12 format, so you can import it to browser
-        $privkey_path = "certificates/cert/www_raizan_com.key";
-        $privkey_open = fopen($privkey_path, 'rb');
-        $privkey = fread($privkey_open, filesize($privkey_path));
+        // // Codes below tell you how to export certificate to pkcs#12 format, so you can import it to browser
+        // $privkey_path = "certificates/cert/www_raizan_com.key";
+        // $privkey_open = fopen($privkey_path, 'rb');
+        // $privkey = fread($privkey_open, filesize($privkey_path));
         
-        // raizan here is a password that will be asked when you're gonna import this certificate
-        openssl_pkcs12_export ( $certout , $p12out , $privkey, "raizan");  
+        // // raizan here is a password that will be asked when you're gonna import this certificate
+        // openssl_pkcs12_export ( $certout , $p12out , $privkey, "raizan");  
         
-        $open = fopen("certificates/cert/raizan.p12", 'wb');
-        fwrite($open, $p12out);
-        // I propose that client can choose which format their certificate will be exported when requested.
+        // $open = fopen("certificates/cert/raizan.p12", 'wb');
+        // fwrite($open, $p12out);
+        // // I propose that client can choose which format their certificate will be exported when requested.
     }
     
     public function certlist() {
         // Untuk listing sertifikat
         // Revoke bisa dilakukan di sini
+        // Reyhan: Ini maksudnya bukan page untuk revoke
         $result = $this->certs_model->getCertificateList();
         $i = 0;
         $pack = array();
@@ -133,7 +156,5 @@ class Admin extends CI_Controller {
         // Output it.
         echo $crl->saveCRL($newcrl) . "\n";
     }
-    
-}
     
 }
