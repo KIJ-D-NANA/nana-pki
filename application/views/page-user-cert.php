@@ -21,6 +21,24 @@
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css'); ?>">
 
         <script src="<?php echo base_url('assets/js/modernizr-2.6.2-respond-1.1.0.min.js') ?>"></script>
+        <script>
+        $(document).ready(function () {
+            $("input#submit").click(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "process.php", // 
+                    data: $('form.contact').serialize(),
+                    success: function(msg){
+                        $("#thanks").html(msg)
+                        $("#form-content").modal('hide');   
+                    },
+                    error: function(){
+                        alert("failure");
+                    }
+                });
+            });
+        });
+    </script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -34,11 +52,25 @@
                 <nav id="mainmenu" class="mainmenu">
                     <ul>
                         <!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
-                        <li class="active">
+                        <li>
                             <a href="<?php echo site_url('home'); ?>">Home</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('home/createCert'); ?>">Create Certificate</a>
+                        </li>
+                        <li class="has-submenu active" >
+                            <a href="#">Manage</a>
+                            <div class="mainmenu-submenu">
+                                <div class="mainmenu-submenu-inner"> 
+                                    <div>
+                                        <ul>
+                                            <li><a href="">Certificates Status</a></li>
+                                            <li><a href="">Manage Certificates</a></li>
+                                            <li><a href="#">Accout (Currently Unavailable)</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!-- /mainmenu-submenu-inner -->
+                            </div><!-- /mainmenu-submenu -->
                         </li>
                         <li>
                             <a href="<?php echo site_url('logout'); ?>">Logout</a>
@@ -47,6 +79,8 @@
                 </nav>
             </div>
         </div>
+
+        <!--Page Content-->
         <div class="section">
             <div class="container">
                 <div class="row">
@@ -60,7 +94,10 @@
                             echo '<tr>';
                             echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
                             echo '<td>SSL Certificate for'.$pack[$i]["serial_number"].'</td>';
-                            echo '<td><button type=submit class="btn btn-grey btn-sm event-more">Read More</button></td>';
+                            //Download Certificate
+                            echo '<td><a href="'.site_url('').'" class="btn btn-grey btn-sm event-more">Download Certificate</a></td>';
+                            //Revoke Certificate
+                            echo '<div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Certificate</a></p></div>'
                             echo '</tr>';
                             $counter++;
                         }   
@@ -70,6 +107,27 @@
                 </div>
             </div>
         </div>
+
+        <!--Revoke Modal-->
+        <div class="container">
+            <div id="form-content" class="modal hide fade in" style="display: none;">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">×</a>
+                    <h3>Revoke Certificate</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="contact" name="contact">
+                        <label class="label" for="reason">Enter Your Reason</label><br>
+                        <textarea name="reason" class="input-xlarge"></textarea>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-danger" type="submit" value="Revoke!" id="submit">
+                    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <div class="footer">
             <div class="container">

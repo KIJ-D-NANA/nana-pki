@@ -40,6 +40,20 @@
 						<li>
 							<a href="<?php echo site_url('home/createCert'); ?>">Create Certificate</a>
 						</li>
+						<li class="has-submenu">
+							<a href="#">Manage</a>
+							<div class="mainmenu-submenu">
+								<div class="mainmenu-submenu-inner"> 
+									<div>
+										<ul>
+											<li><a href="">Certificates Status</a></li>
+											<li><a href="">Manage Certificates</a></li>
+											<li><a href="#">Accout (Currently Unavailable)</a></li>
+										</ul>
+									</div>
+								</div><!-- /mainmenu-submenu-inner -->
+							</div><!-- /mainmenu-submenu -->
+						</li>
 						<li>
 							<a href="<?php echo site_url('logout'); ?>">Logout</a>
 						</li>
