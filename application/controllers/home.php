@@ -21,6 +21,10 @@ class Home extends CI_Controller {
     public function submitCsr(){
         $this->load->view('page-submit-csr');
     }
+
+    public function listUserCert(){
+        $this->load->view('page-user-cert');
+    }
     
     public function uploadCsr(){
         $csr = $this->input->post('csr');

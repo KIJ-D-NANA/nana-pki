@@ -29,73 +29,61 @@
         
 
         <!-- Navigation & Logo-->
-         <div class="mainmenu-wrapper">
-	        <div class="container">
-		        <nav id="mainmenu" class="mainmenu">
-					<ul>
-						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
-						<li>
-							<a href="<?php echo site_url('admin'); ?>">Home Admin</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo site_url('admin/certlist'); ?>">Certificate List</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo site_url('admin/csrlist'); ?>">CSR List</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
-		<!-- Page Title -->
-		<div class="section section-breadcrumbs">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h1>Certificate List</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-        
+        <div class="mainmenu-wrapper">
+            <div class="container">
+                <nav id="mainmenu" class="mainmenu">
+                    <ul>
+                        <!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
+                        <li class="active">
+                            <a href="<?php echo site_url('home'); ?>">Home</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('home/createCert'); ?>">Create Certificate</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('logout'); ?>">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <div class="section">
-	    	<div class="container">
-	    		<div class="row">
-	    			<div class="col-md-12">
-	    				<form role="form" method="post" action="<?php echo site_url('admin/revoke'); ?>">
-	    				<? php 
-	    				echo '<table class="events-list">';
-	    				$counter = 1;
-	    				foreach($pack as $row)
-	    				{
-	    					echo '<tr>';
-	    					echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
-	    					echo '<td>'.$pack[$i]["serial_number"].'</td>';
-	    					echo '<td><button type=submit class="btn btn-grey btn-sm event-more">Read More</button></td>';
-	    					echo '</tr>';
-	    					$counter++;
-	    				}	
-	    				echo "</table>"; ?>
-	    				</form>
-	    			</div>
-	    		</div>
-			</div>
-		</div>
-		<!-- Footer -->
-	    <div class="footer">
-	    	<div class="container">
-		    	<div class="row">
-		    		<div class="col-md-12">
-		    			<div class="footer-copyright">&copy; 2015 OwnCA Beta</div>
-		    		</div>
-		    	</div>
-		    </div>
-	    </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form role="form" method="post" action="">
+                        <? php 
+                        echo '<table class="events-list">';
+                        $counter = 1;
+                        foreach($pack as $row)
+                        {
+                            echo '<tr>';
+                            echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
+                            echo '<td>SSL Certificate for'.$pack[$i]["serial_number"].'</td>';
+                            echo '<td><button type=submit class="btn btn-grey btn-sm event-more">Read More</button></td>';
+                            echo '</tr>';
+                            $counter++;
+                        }   
+                        echo "</table>"; ?>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-copyright">&copy; 2015 OwnCA Beta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Javascripts -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url('assets/js/jquery-1.9.1.min.js') ?>"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url('assets/js/jquery-1.9.1.min.js'); ?>"><\/script>')</script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
         <script src="<?php echo base_url('assets/js/jquery.fitvids.js'); ?>"></script>
