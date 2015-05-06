@@ -18,23 +18,28 @@
     </script>
     
 
-        <!--Page Content-->
+    <!--Page Content-->
         <div class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <? php 
-                        echo '<table class="events-list">';
-                        $counter = 1;
+                    <div class="col-lg-12">
+                        <table class="table-striped table-condensed text-center" style="margin:auto;width:80%;"  >
+                        <tr class="text-center">
+	    			            <th class="text-center">CSR ID</th>
+	    			            <th class="text-center">Status</th>
+	    			    </tr>
+	    			    <?php
+                        $i = 0;
                         foreach($pack as $row)
                         {
                             echo '<tr>';
-                            echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
-                            echo '<td>Status for CSR ID : '.$pack[$i]["csr_id"].'</td>';
-                            echo '<td> still Pending </td>';
-                            $counter++;
+                            echo '<td> '.$pack[$i]["csr_id"].'</td>';
+                            echo '<td>Pending</td>';
+                            echo '</tr>';
+                            
                         }   
-                        echo "</table>"; ?>
+                        ?>
+                        </table>
                     </div>
                 </div>
             </div>
