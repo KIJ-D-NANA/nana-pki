@@ -49,13 +49,19 @@ class Home extends CI_Controller {
         $result = $this->csr_model->getAll();
         $i = 0;
         $pack = array();
-        
-        foreach ($result as $row) {
-            $pack[$i]["csr_id"] = $row->csr_id;
+        if(isset($result)){
+            foreach ($result as $row) {
+                 $pack[$i]["csr_id"] = $row->csr_id;
+            }
         }
         
         $data["pack"] = $pack;
-        $this->load->view('page-user-csr', $data);
+        $data['title'] =  "CSR List";
+        $data['url'] = 'home/listUserCsr';
+        $this->load->view('client_header',$data);
+        $this->load->view('title_header',$data);
+        $this->load->view('page-user-csr',$data);
+        $this->load->view('footer');
     }
 
     public function uploadCsr(){
@@ -72,7 +78,18 @@ class Home extends CI_Controller {
         // Data representation: Table
     }
     
-    public function exportcert($format, $serial_number){
+    public function exportcert(){
+        $serial = $this->input->post('serial_number');
+        $format = $this->input->post('format');
         
+        $cert = $this->certs_model->getCertificate($serial);
+        print_r(openssl_x509_parse($cert));
+        if ($format == "crt") {
+            
+        }
+        
+        else if ($format == "pkcs12") {
+            
+        }
     }
 }
