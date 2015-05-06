@@ -23,7 +23,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" method="post" action="">
                         <? php 
                         echo '<table class="events-list">';
                         $counter = 1;
@@ -36,7 +35,6 @@
                             $counter++;
                         }   
                         echo "</table>"; ?>
-                        </form>
                     </div>
                 </div>
             </div>
