@@ -34,14 +34,14 @@
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
-						<li class="active">
-							<a href="<?php echo site_url('home'); ?>">Home</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo site_url('cert'); ?>">Create Certificate</a>
-						</li>
 						<li>
-							<a href="<?php echo site_url('logout'); ?>">Logout</a>
+							<a href="<?php echo site_url('admin'); ?>">Home Admin</a>
+						</li>
+						<li class="active">
+							<a href="<?php echo site_url('admin/certlist'); ?>">Certificate List</a>
+						</li>
+						<li class="active">
+							<a href="<?php echo site_url('admin/csrlist'); ?>">CSR List</a>
 						</li>
 					</ul>
 				</nav>

@@ -29,19 +29,19 @@
         
 
         <!-- Navigation & Logo-->
-        <div class="mainmenu-wrapper">
+         <div class="mainmenu-wrapper">
 	        <div class="container">
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
-						<li class="active">
-							<a href="<?php echo site_url('home'); ?>">Home</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo site_url('cert'); ?>">Create Certificate</a>
-						</li>
 						<li>
-							<a href="<?php echo site_url('logout'); ?>">Logout</a>
+							<a href="<?php echo site_url('admin'); ?>">Home Admin</a>
+						</li>
+						<li class="active">
+							<a href="<?php echo site_url('admin/certlist'); ?>">Certificate List</a>
+						</li>
+						<li class="active">
+							<a href="<?php echo site_url('admin/csrlist'); ?>">CSR List</a>
 						</li>
 					</ul>
 				</nav>
@@ -63,24 +63,21 @@
 	    	<div class="container">
 	    		<div class="row">
 	    			<div class="col-md-12">
-	    				echo "<table class="events-list">";
-	    				<? php $counter = 1;
-	    				for ($i = 0; $i < sizeof($data); $i = $i + 1;)
+	    				<form role="form" method="post" action="<?php echo site_url('admin/revoke'); ?>">
+	    				<? php 
+	    				echo '<table class="events-list">';
+	    				$counter = 1;
+	    				foreach($pack as $row)
 	    				{
-	    					echo "<tr>";
-	    						echo "<td>
-	    							<div class="event-date">
-	    								<div class="event-day">$counter</div>
-	    							</div>
-	    						</td>";
-	    						echo '<td>
-	    							'.$data[$i]["serial_number"].'
-	    						</td>';
-	    						echo "<td><a href="#" class="btn btn-grey btn-sm event-more">Read More</a></td>";
-	    					echo "</tr>";
+	    					echo '<tr>';
+	    					echo '<td><div class="event-date"> <div class="event-day">$counter</div></div></td>';
+	    					echo '<td>'.$pack[$i]["serial_number"].'</td>';
+	    					echo '<td><button type=submit class="btn btn-grey btn-sm event-more">Read More</button></td>';
+	    					echo '</tr>';
 	    					$counter++;
 	    				}	
 	    				echo "</table>"; ?>
+	    				</form>
 	    			</div>
 	    		</div>
 			</div>
