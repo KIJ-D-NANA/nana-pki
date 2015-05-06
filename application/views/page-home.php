@@ -38,7 +38,7 @@
 							<a href="<?php echo site_url('home'); ?>">Home</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('cert'); ?>">Create Certificate</a>
+							<a href="<?php echo site_url('home/createCert'); ?>">Create Certificate</a>
 						</li>
 						<li>
 							<a href="<?php echo site_url('logout'); ?>">Logout</a>
