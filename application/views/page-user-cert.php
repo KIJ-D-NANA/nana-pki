@@ -64,8 +64,8 @@
                                 <div class="mainmenu-submenu-inner"> 
                                     <div>
                                         <ul>
-                                            <li><a href="">Certificates Status</a></li>
-                                            <li><a href="">Manage Certificates</a></li>
+                                            <li><a href="home/listUserCert">Certificates Status</a></li>
+                                            <li><a href="home/listUserCsr">Manage Certificates</a></li>
                                             <li><a href="#">Accout (Currently Unavailable)</a></li>
                                         </ul>
                                     </div>
@@ -94,8 +94,20 @@
                             echo '<tr>';
                             echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
                             echo '<td>SSL Certificate for'.$pack[$i]["serial_number"].'</td>';
+                            
                             //Download Certificate
-                            echo '<td><a href="'.site_url('').'" class="btn btn-grey btn-sm event-more">Download Certificate</a></td>';
+                            echo '<td>
+                            <form method="post" action="'.site_url('').'>
+                            <select name="dlformat">
+                                <option value=""> --Select Download Format--</option>
+                                <option value="crt">CRT</option>
+                                <option value="pkcs12">PKCS#12</option>
+                                <option value="pem">PEM</option>
+                            </select>
+                            <button type="submit" class="btn btn-default">Download!</button>
+                            </form>
+                            </td>'
+                
                             //Revoke Certificate
                             echo '<div id="thanks"><p><a data-toggle="modal" href="#form-content" class="btn btn-grey btn-sm event-more">Revoke Certificate</a></p></div>'
                             echo '</tr>';
