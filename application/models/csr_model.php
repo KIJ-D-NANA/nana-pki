@@ -6,11 +6,11 @@ class Csr_model extends CI_Model {
         parent::__construct();
     }
     
-    public function saveCsr($csr) {
+    public function saveCsr($csr, $usage) {
         $uuid = $this->generate_uuid_v4();
         $user_id = $this->session->userdata('user_id');
         
-        $sql = 'insert into csr values(\''.$uuid.'\',\''.$user_id.'\''.',\''.$csr.'\', 0)';
+        $sql = 'insert into csr values(\''.$uuid.'\',\''.$user_id.'\''.',\''.$csr.'\', 0,\''.$usage.'\', now())';
         $this->db->query($sql);
     }
     
@@ -25,12 +25,29 @@ class Csr_model extends CI_Model {
         }
     }
     
+    public function signCsr($csr_id) {
+        $sql = 'update csr set csr_signed = 1 where csr_id = \''.$csr_id.'\'';
+        $query = $this->db->query($sql);
+    }
+    
     public function getCsr($csr_id) {
         $sql = 'select csr_content from csr where csr_id = \''.$csr_id.'\'';
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
            $result = $query->row();
            return $result->csr_content;
+        }
+        else {
+            // Failed
+        }
+    }
+    
+    public function getUsage($csr_id) {
+        $sql = 'select cert_usage from csr where csr_id = \''.$csr_id.'\'';
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+           $result = $query->row();
+           return $result->cert_usage;
         }
         else {
             // Failed

@@ -23,20 +23,23 @@ class Admin extends CI_Controller {
         $result = $this->csr_model->getAll();
         $i = 0;
         $pack = array();
-        foreach ($result as $row) {
-            $pack[$i]["dn"] = openssl_csr_get_subject($row->csr_content);
-            $pack[$i]["username"] = $row->user_name;
-            $pack[$i]["csr_id"] = $row->csr_id;
+        if(isset($result)) {
+            foreach ($result as $row) {
+                $pack[$i]["dn"] = openssl_csr_get_subject($row->csr_content);
+                $pack[$i]["username"] = $row->user_name;
+                $pack[$i]["csr_id"] = $row->csr_id;
+            }
         }
         
         $data["pack"] = $pack;
-        $this->load->view('page-admin', $data);
+        $this->load->view('page-csr-list', $data);
     }
     
     public function signCsr($csr_id) {
         
-        // Get CSR from database
+        // Get CSR and usage from database
         $csrdata = $this->csr_model->getCsr($csr_id);
+        $certusage = $this->csr_model->getUsage($csr_id);
         
         $cacert_path = "certificates/ca/signing-ca.crt";
         $cacert_open = fopen($cacert_path, 'rb');
@@ -58,15 +61,25 @@ class Admin extends CI_Controller {
         // (See: certificate key usage field)
         // Reference: http://www.databasemart.com/howto/SQLoverssl/How_To_Request_Certificate_From_Certificate_Authority_Server_In_Internet_Explore.aspx
         
-        $config = array(
-            "config" => "",
-            "x509_extensions" => "email_ext",
-            "x509_extensions"
-            "digest_alg" => "sha256",
-            "private_key_bits" => 2048,
-            "private_key_type" => OPENSSL_KEYTYPE_RSA
-        );
+        if ($certusage == "tls") {
+            $config = array(
+                "config" => "certificates/config/signing-ca.conf",
+                "x509_extensions" => "server_ext",
+                "digest_alg" => "sha256",
+                "private_key_bits" => 2048,
+                "private_key_type" => OPENSSL_KEYTYPE_RSA
+            );
+        }
         
+        else if ($certusage == "email") {
+            $config = array(
+                "config" => "certificates/config/signing-ca.conf",
+                "x509_extensions" => "email_ext",
+                "digest_alg" => "sha256",
+                "private_key_bits" => 2048,
+                "private_key_type" => OPENSSL_KEYTYPE_RSA
+            );
+        }
         
         $serial = null;
         
@@ -113,16 +126,16 @@ class Admin extends CI_Controller {
     public function certlist() {
         // Untuk listing sertifikat
         // Revoke bisa dilakukan di sini
-        // Reyhan: Ini maksudnya bukan page untuk revoke
         $result = $this->certs_model->getCertificateList();
         $i = 0;
         $pack = array();
         foreach ($result as $row) {
             $pack[$i]["serial_number"] = $row->serial_number;
+            $i++;
         }    
         $data["pack"] = $pack;
         // Presentasi data dalam bentuk tabel
-        $this->load->view('page-torevoke', $data);
+        $this->load->view('page-cert-list', $data);
     }
 
     public function revoke(){

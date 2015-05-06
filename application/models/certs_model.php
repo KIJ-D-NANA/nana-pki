@@ -6,15 +6,20 @@ class Certs_model extends CI_Model {
         parent::__construct();
     }
     
-    public function getCertificateList(){
-        $sql = 'select * from certificates';
-        $query = $this->db->query($sql);
-        $i = 0;
-        foreach ($query->result() as row){
-            $cert[$i]["serial_number"] = $row->serial_number;
-            $i = $i + 1;
+    public function getCertificateList($user_id=null){
+        if ($user_id == null){
+            $sql = 'select * from certificates';
         }
-        return $cert;
+        else {
+            $sql = 'select * from certificates where user_id = \''.$user_id.'\'';
+        }
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+           return $query->result();
+        }
+        else {
+            // Failed
+        }
     }
     
 
@@ -31,8 +36,20 @@ class Certs_model extends CI_Model {
     
     public function saveCertificate($serial, $csr_id, $cert) {
         $user_id = $this->session->userdata('user_id');
-        $sql = 'insert into certificates values(\''.$serial.'\',\''.$user_id.'\''.',\''.$csr_id.'\''.',\''.$cert.'\')';
+        $sql = 'insert into certificates values(\''.$serial.'\',\''.$user_id.'\''.',\''.$csr_id.'\''.',\''.$cert.'\', 0, now())';
         $this->db->query($sql);
+    }
+    
+    public function getCertificate($serial) {
+        $sql = 'select certificate_content from certificates where serial_number = \''.$serial.'\'';
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+           $result = $query->row();
+           return $result->certificate_content;
+        }
+        else {
+            // Failed
+        }
     }
     
     private function generate_uuid_v4() {
