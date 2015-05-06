@@ -64,8 +64,8 @@
                                 <div class="mainmenu-submenu-inner"> 
                                     <div>
                                         <ul>
-                                            <li><a href="">Certificates Status</a></li>
-                                            <li><a href="">Manage Certificates</a></li>
+                                            <li><a href="home/listUserCert">Certificates Status</a></li>
+                                            <li><a href="home/listUserCsr">Manage Certificates</a></li>
                                             <li><a href="#">Accout (Currently Unavailable)</a></li>
                                         </ul>
                                     </div>
@@ -94,7 +94,7 @@
                             echo '<tr>';
                             echo '<td><div class="event-date"> <div class="event-day">'.$counter.'</div></div></td>';
                             echo '<td>Status for CSR ID : '.$pack[$i]["csr_id"].'</td>';
-                            echo '<td>is'.$pack[$i]["signed"].'</td>';
+                            echo '<td> still Pending </td>';
                             $counter++;
                         }   
                         echo "</table>"; ?>

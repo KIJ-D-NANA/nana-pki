@@ -8,6 +8,7 @@ class Home extends CI_Controller {
             redirect(site_url('login'));
         }
         $this->load->model('csr_model');
+        $this->load->model('cert_model');
     }
 
     public function index() {
@@ -26,6 +27,17 @@ class Home extends CI_Controller {
         $this->load->view('page-user-cert');
     }
     
+    public function listUserCsr(){
+        $result = $this->csr_model->getAll();
+        $i = 0;
+        $pack = array();
+        foreach ($result as $row) {
+            $pack[$i]["csr_id"] = $row->csr_id;
+        }
+        $data["pack"] = $pack;
+        $this->load->view('page-user-csr', $data);
+    }
+
     public function uploadCsr(){
         $csr = $this->input->post('csr');
         
