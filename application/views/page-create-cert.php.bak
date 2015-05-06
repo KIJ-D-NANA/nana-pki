@@ -63,7 +63,7 @@
 				<div class="row">
 					<div class="col-md-6 centered">
 						<div class="basic-login">
-							<form role="form" method="post" enctype="multipart/form-data" action="">
+							<form role="form" method="post" enctype="multipart/form-data" action="<?php echo site_url('home/uploadCsr')?>">
 								<div class="form-group">
 		        				 	<label for="countryname"><i class="icon-user"></i> <b>country name</b></label>
 									<input class="form-control" name="countryname" id="countryname" type="text" placeholder="">
@@ -93,8 +93,8 @@
 									<input class="form-control" name="emailaddress" id="emailaddress" type="text" placeholder="">
 								</div>
 								<div class="form-group">
-		        				 	<label for="publickey"><i class="icon-lock"></i> <b>public key</b></label>
-									<input class="form-control" name="publickey" id="publickey" type="file" placeholder="">
+		        				 	<label for="csr"><i class="icon-lock"></i> <b>CSR</b></label>
+									<input class="form-control" name="csr" id="csr" type="file" placeholder="">
 								</div>
 								<div class="form-group">
 									

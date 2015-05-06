@@ -28,31 +28,35 @@
         <![endif]-->
         
 
-        <!-- Navigation & Logo-->
+                <!-- Navigation & Logo-->
         <div class="mainmenu-wrapper">
 	        <div class="container">
 		        <nav id="mainmenu" class="mainmenu">
 					<ul>
 						<!--<li class="logo-wrapper"><a href="index.html"><img src="img/mPurpose-logo.png" alt=""></a></li>-->
 						<li>
-							<a href="<?php echo site_url('home') ?>">Home</a>
-						</li>
-						<li class="active">
-							<a href="<?php echo site_url('cert'); ?>">Create Certificate</a>
+							<a href="<?php echo site_url('home'); ?>">Home</a>
 						</li>
 						<li>
-							<a href="<?php echo site_url('logout') ?>">Logout</a>
+							<a href="<?php echo site_url('home/createCert'); ?>">Create Certificate</a>
+						</li>
+						<li class="active">
+							<a href="<?php echo site_url('home/submitCsr'); ?>">Request Signed Certificate </a>
+						</li>
+						<li>
+							<a href="<?php echo site_url('logout'); ?>">Logout</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
 		</div>
+
         <!-- Page Title -->
 		<div class="section section-breadcrumbs">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 centered">
-						<h1>Create Certificate</h1>
+						<h1>Request Signed Certificate</h1>
 					</div>
 				</div>
 			</div>
@@ -61,12 +65,21 @@
         <div class="section">
 	    	<div class="container">
 				<div class="row">
-					<div class="col-md-6 centered">
+					<div class="col-md-7 centered">
 						<div class="basic-login">
 							<form id="usrform" role="form" method="post" enctype="multipart/form-data" action="<?php echo site_url('home/uploadcsr'); ?>">
 								<div class="form-group">
-									<label for="usrform">Paste your CSR content here</label>
-		        				 	<textarea rows="4" cols="50" name="csr" form="usrform"></textarea>
+									<label for="usrform">CSR File Upload</label>
+		        				 	<input class="form-control" name="csr" id="csr" type="file" placeholder="">
+								</div>
+								<div class="control-group">
+								  <label class="control-label" for="usage">Certificate Usage</label>
+								  <div class="controls">
+								    <select id="usage" name="usage" class="input-large">
+								      <option value="tls">TLS Server Certificate</option>
+								      <option value="email">Email Certificate</option>
+								    </select>
+								  </div>
 								</div>
 								<div class="form-group">
 									<button type="submit" class="btn pull-right">Submit</button>
