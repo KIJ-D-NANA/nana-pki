@@ -18,7 +18,13 @@ class Login extends CI_Controller {
 
         if ($login) {
             // Session started
-            redirect(site_url('home'));
+            if ($this->session->userdata('user_name') == "admin"){
+                redirect(site_url('admin'));
+            }
+            else {
+                redirect(site_url('home'));    
+            }
+            
         }
         else {
             // Set message incorrect username or password
